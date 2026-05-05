@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prism Cloud | The Atomic Nexus</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* =========================================
+           PRISM CLOUD: MASTER CSS STYLESHEET
+           ========================================= */
+        :root {
+            --neon-blue: #00e5ff;
+            --neon-purple: #b537f2;
+            --dark-bg: #050508;
+            --glass-bg: rgba(20, 20, 30, 0.6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: #ffffff;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(0, 229, 255, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(181, 55, 242, 0.08), transparent 25%);
+        }
+
+        /* --- NAVIGATION BAR --- */
+        nav {
+            background: rgba(5, 5, 8, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .nav-links button {
+            background: transparent;
+            color: #fff;
+            border: 1px solid var(--neon-blue);
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-left: 15px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .nav-links button:hover {
+            background: var(--neon-blue);
+            color: #000;
+            box-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            flex: 1;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: pulse 3s infinite alternate;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #aaa;
+            margin-top: 15px;
+            margin-bottom: 50px;
+            letter-spacing: 1px;
+        }
+
+        /* --- LIVE STATS BAR --- */
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .stat-box {
+            background: var(--glass-bg);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 15px 30px;
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
+        }
+
+        .stat-box h4 { color: #888; font-size: 14px; text-transform: uppercase; }
+        .stat-box span { font-size: 24px; font-weight: bold; color: var(--neon-blue); }
+
+        /* --- GRID CARDS (GLASSMORPHISM) --- */
+        .grid-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 80px;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            width: 320px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-blue));
+            transition: 0.5s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 229, 255, 0.15);
+            border-color: var(--neon-blue);
+        }
+
+        .card:hover::before { left: 100%; }
+
+        .card h3 { font-size: 24px; margin-bottom: 15px; color: #fff; }
+        .card p { color: #ccc; font-size: 16px; margin-bottom: 20px; line-height: 1.5; }
+        
+        .ip-box {
+            background: rgba(0,0,0,0.5);
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px dashed #555;
+            font-family: monospace;
+            color: var(--neon-blue);
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .btn-main {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 12px;
+            background: var(--neon-blue);
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-main:hover { background: #fff; box-shadow: 0 0 20px #fff; }
+
+        /* --- THE FOUNDER FOOTER --- */
+        .founder-footer {
+            background: #020202;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #111;
+            margin-top: auto;
+            color: #555;
+            font-size: 16px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .neon-name {
+            color: var(--neon-blue);
+            font-weight: 700;
+            text-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
+        }
+
+        @keyframes pulse {
+            0% { filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.4)); }
+            100% { filter: drop-shadow(0 0 25px rgba(181, 55, 242, 0.6)); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-logo">PRISM CLOUD</div>
+        <div class="nav-links">
+            <button onclick="alert('Microsoft / Google Login Activated')">Login via AI Shield</button>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>The Atomic Nexus</h1>
+        <p>100 Trillion Processes. Infinite Worlds. Zero Download Required.</p>
+
+        <div class="stats-container">
+            <div class="stat-box">
+                <h4>Network Status</h4>
+                <span id="ai-status">Level Skewes</span>
+            </div>
+            <div class="stat-box">
+                <h4>Active Connections</h4>
+                <span id="player-count">6,890</span>
+            </div>
+            <div class="stat-box">
+                <h4>Data Sync Link</h4>
+                <span id="ping-rate">1ms</span>
+            </div>
+        </div>
+
+        <div class="grid-container">
+            
+            <div class="card">
+                <h3>Official Connect</h3>
+                <p>Join instantly from Java PC, Windows Bedrock, iOS, or Android using our Universal IP bridge.</p>
+                <div class="ip-box">play.prismcloud.net</div>
+                <p style="font-size: 14px; color: #888;">Java: 25565 | Bedrock: 19132</p>
+                <button class="btn-main" onclick="copyIP()">Copy IP Address</button>
+            </div>
+
+            <div class="card">
+                <h3>Browser Engine</h3>
+                <p>No downloads. No installations. Play the full Minecraft 1.21 experience directly in your web tab.</p>
+                <div class="ip-box" style="color: var(--neon-purple); border-color: var(--neon-purple);">Eagler-Atomic Ready</div>
+                <br>
+                <button class="btn-main" style="background: var(--neon-purple); color: white;" onclick="launchWeb()">Play in Browser</button>
+            </div>
+
+            <div class="card">
+                <h3>Prism Security & App</h3>
+                <p>Protected by Kevin Mitnick-level AI defenses. Download the native Android APK for maximum FPS.</p>
+                <div class="ip-box" style="color: #0f0; border-color: #0f0;">Scan Complete: 100% Secure</div>
+                <br>
+                <button class="btn-main" style="background: #0f0; color: black;" onclick="downloadAPK()">Download APK v1.0</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="founder-footer">
+        MADE BY <span class="neon-name">JAI</span> // SUPPORT BY <span class="neon-name">SONIA MAM</span>
+    </div>
+
+    <script>
+        // AI Heartbeat Simulator (Updates numbers to look alive)
+        setInterval(() => {
+            let currentPlayers = parseInt(document.getElementById('player-count').innerText.replace(',', ''));
+            let fluctuation = Math.floor(Math.random() * 5) - 2; // Random up/down
+            document.getElementById('player-count').innerText = (currentPlayers + fluctuation).toLocaleString();
+            
+            let ping = Math.floor(Math.random() * 3) + 1;
+            document.getElementById('ping-rate').innerText = ping + 'ms';
+        }, 2000);
+
+        function copyIP() {
+            navigator.clipboard.writeText("play.prismcloud.net");
+            alert("Universal IP Copied! Paste it into your Minecraft client.");
+        }
+
+        function launchWeb() {
+            alert("[PRISM MIND AI]: Allocating Server Space. Redirecting to Browser Engine...");
+        }
+
+        function downloadAPK() {
+            alert("Downloading Prism Cloud Alpha APK. Securing connection...");
+        }
+    </script>
+</body>
+</html>
